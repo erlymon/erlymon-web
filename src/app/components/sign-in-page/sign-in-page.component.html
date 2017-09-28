@@ -1,3 +1,25 @@
-<p>
-  sign-in-page works!
-</p>
+<div class="flex-container"
+    [style.height.px]="height"
+     fxLayout="row"
+     fxLayout.xs="column"
+     fxLayoutAlign="center center"
+     fxLayoutAlign.xs="start">
+     <div class="flex-item" fxFlexAlign="center">
+        <md-card>
+          <form [formGroup]="signInForm">
+            <div fxLayout="column" fxLayoutAlign="space-around start"  fxLayoutWrap>
+              <md-input-container>
+                <input mdInput formControlName="username" id="username" placeholder="Username" value="">
+              </md-input-container>
+              <md-input-container>
+                <input mdInput formControlName="password" id="password" placeholder="Password" value="">
+              </md-input-container>
+              <div class="button-row">
+                <button md-button (click)="onSignUp()">Register</button>
+                <button md-button (click)="onSignIn()">Login</button>
+              </div>
+            </div>
+          </form>
+        </md-card>
+      </div>
+</div>

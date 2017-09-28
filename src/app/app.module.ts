@@ -4,6 +4,27 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { Routes, RouterModule } from '@angular/router';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {
+  MdButtonModule,
+  MdCheckboxModule,
+  MdInputModule,
+  MdGridListModule,
+  MdCardModule,
+  MdToolbarModule,
+  MdSidenavModule,
+  MdMenuModule,
+  MdIconModule,
+  MdListModule,
+  MdTableModule,
+  MdPaginatorModule,
+  MdTabsModule,
+  MdDialogModule,
+  MdSelectModule
+} from '@angular/material';
+import { CdkTableModule } from '@angular/cdk/table';
+import { FlexLayoutModule } from "@angular/flex-layout";
+
 import { AppComponent } from './app.component';
 import { MainPageComponent } from './components/main-page/main-page.component';
 import { SignInPageComponent } from './components/sign-in-page/sign-in-page.component';
@@ -34,7 +55,25 @@ const appRoutes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    RouterModule.forRoot(appRoutes, { enableTracing: false })
+    RouterModule.forRoot(appRoutes, { enableTracing: false }),
+    BrowserAnimationsModule,
+    MdButtonModule,
+    MdCheckboxModule,
+    MdInputModule,
+    MdGridListModule,
+    MdCardModule,
+    MdToolbarModule,
+    MdSidenavModule,
+    MdMenuModule,
+    MdIconModule,
+    MdListModule,
+    MdTableModule,
+    MdPaginatorModule,
+    MdTabsModule,
+    MdDialogModule,
+    MdSelectModule,
+    CdkTableModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
