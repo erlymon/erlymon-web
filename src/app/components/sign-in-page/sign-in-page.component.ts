@@ -18,11 +18,11 @@ export class SignInPageComponent implements OnInit {
 
   constructor(private router: Router, private fb: FormBuilder, public dialog: MdDialog) {
     this.signInForm = this.fb.group({
-      username: '', // <--- the FormControl called "name"
+      email: '', // <--- the FormControl called "name"
       password: ''
     });
 
-    this.username = this.signInForm.controls['username'];
+    this.username = this.signInForm.controls['email'];
     this.password = this.signInForm.controls['password'];
     this.height = window.innerHeight - 20;
   }
