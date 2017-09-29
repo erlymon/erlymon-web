@@ -11,6 +11,12 @@
               <md-card-title>{{'loginTitle' | translate}}</md-card-title>
             </md-card-header>
             <md-card-content>
+              <md-select placeholder="Language" formControlName="language" [(ngModel)]="selectedLanguage" (ngModelChange)="onChangeLanguage()">
+                <md-option *ngFor="let language of languages" [value]="language.value">
+                  {{ language.name }}
+                </md-option>
+              </md-select>
+              <br>
               <md-input-container>
                 <input mdInput formControlName="email" id="email" placeholder="Email" value="">
               </md-input-container>

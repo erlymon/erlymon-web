@@ -3,6 +3,9 @@ import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/fo
 import { MdDialog } from '@angular/material';
 
 import { Router } from "@angular/router";
+import { TranslateService } from '@ngx-translate/core';
+
+import { CountryCodeService } from '../../services/country-code.service';
 
 @Component({
   selector: 'app-sign-in-page',
@@ -12,18 +15,23 @@ import { Router } from "@angular/router";
 export class SignInPageComponent implements OnInit {
   height: Number;
   public signInForm: FormGroup;
-  public username: AbstractControl;
-  public password: AbstractControl;
   public submitted: boolean = false;
 
-  constructor(private router: Router, private fb: FormBuilder, public dialog: MdDialog) {
+  selectedLanguage: string;
+  languages = [];
+
+  constructor(private translate: TranslateService, private countryCode: CountryCodeService, private router: Router, private fb: FormBuilder, public dialog: MdDialog) {
+    for (let i in this.translate.getLangs()) {
+      var code = this.translate.getLangs()[i]
+      this.languages.push({ name: countryCode.getLanguageNativeName(code), value: code });
+    }
+    this.selectedLanguage = translate.currentLang;
     this.signInForm = this.fb.group({
+      language: '', // <--- the FormControl called "name"
       email: '', // <--- the FormControl called "name"
       password: ''
     });
 
-    this.username = this.signInForm.controls['email'];
-    this.password = this.signInForm.controls['password'];
     this.height = window.innerHeight - 20;
   }
 
@@ -36,6 +44,10 @@ export class SignInPageComponent implements OnInit {
 
   onSignIn() {
     this.router.navigate(['/']);
+  }
+
+  onChangeLanguage() {
+    this.translate.use(this.selectedLanguage);
   }
 
   @HostListener('window:resize', ['$event'])

@@ -28,6 +28,7 @@ import { FlexLayoutModule } from "@angular/flex-layout";
 import { TranslateModule, TranslateLoader } from "@ngx-translate/core"; //изменилось
 import { TranslateHttpLoader } from "@ngx-translate/http-loader"; //изменилось
 
+import { CountryCodeService } from './services/country-code.service';
 import { AppComponent } from './app.component';
 import { MainPageComponent } from './components/main-page/main-page.component';
 import { SignInPageComponent } from './components/sign-in-page/sign-in-page.component';
@@ -91,7 +92,7 @@ const appRoutes: Routes = [
       }
     })
   ],
-  providers: [],
+  providers: [CountryCodeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
