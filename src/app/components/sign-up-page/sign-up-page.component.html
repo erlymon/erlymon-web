@@ -5,14 +5,18 @@
      fxLayoutAlign="center center"
      fxLayoutAlign.xs="start">
      <div class="flex-item" fxFlexAlign="center">
-        <md-card>
-          <form [formGroup]="signUpForm">
-            <div fxLayout="column" fxLayoutAlign="space-around start"  fxLayoutWrap>
+        <form [formGroup]="signUpForm">
+          <md-card>
+            <md-card-header>
+              <md-card-title>{{'loginRegister' | translate}}</md-card-title>
+            </md-card-header>
+            <md-card-content>
               <md-input-container>
-                <input mdInput formControlName="username" id="username" placeholder="Name" value="">
+                <input mdInput formControlName="username" id="username" placeholder="{{'userName' | translate}}" value="">
               </md-input-container>
+              <br>
               <md-input-container class="example-full-width">
-                <input type="text" mdInput formControlName="email" id="email" placeholder="Email" pattern="[a-zA-Z 0-9]*" maxlength="256" required>
+                <input type="text" mdInput formControlName="email" id="email" placeholder="{{'userEmail' | translate}}" pattern="[a-zA-Z 0-9]*" maxlength="256" required>
                 <!--
                 <md-error *ngIf="emailFormControl.hasError('pattern')">
                   Please enter a valid email address
@@ -22,15 +26,17 @@
                 </md-error>
                 -->
               </md-input-container>
+              <br>
               <md-input-container>
-                <input mdInput formControlName="password" id="password" placeholder="Password" value="">
+                <input mdInput formControlName="password" id="password" placeholder="{{'userPassword' | translate}}" value="" required>
               </md-input-container>
-              <div class="button-row">
-              <button md-button (click)="onBack()">Cancel</button>
-              <button md-button (click)="onSignIn()">Save</button>
-              </div>
-            </div>
-          </form>
-        </md-card>
+            </md-card-content>
+            <md-card-actions>
+              <button md-button (click)="onBack()">{{'sharedCancel' | translate}}</button>
+              <button md-button (click)="onSignIn()">{{'sharedSave' | translate}}</button>
+            </md-card-actions>
+
+          </md-card>
+        </form>
       </div>
 </div>
