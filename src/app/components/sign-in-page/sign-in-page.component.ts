@@ -25,6 +25,7 @@ import { Router } from "@angular/router";
 import { TranslateService } from '@ngx-translate/core';
 
 import { CountryCodeService } from '../../services/country-code.service';
+import { SessionService } from '../../services/session.service';
 
 @Component({
   selector: 'app-sign-in-page',
@@ -39,7 +40,14 @@ export class SignInPageComponent implements OnInit {
   selectedLanguage: string;
   languages = [];
 
-  constructor(private translate: TranslateService, private countryCode: CountryCodeService, private router: Router, private fb: FormBuilder, public dialog: MdDialog) {
+  constructor(
+    private translate: TranslateService,
+    private countryCode: CountryCodeService,
+    private session: SessionService,
+    private router: Router,
+    private fb: FormBuilder,
+    public dialog: MdDialog
+  ) {
     for (let i in this.translate.getLangs()) {
       var code = this.translate.getLangs()[i]
       this.languages.push({ name: countryCode.getLanguageNativeName(code), value: code });
@@ -62,7 +70,8 @@ export class SignInPageComponent implements OnInit {
   }
 
   onSignIn() {
-    this.router.navigate(['/']);
+    this.session.setData({});
+    this.router.navigate(['/main']);
   }
 
   onChangeLanguage() {

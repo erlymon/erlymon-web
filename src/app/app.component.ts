@@ -18,7 +18,11 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 import { Component } from '@angular/core';
+import { Router } from "@angular/router";
+import { Location } from "@angular/common";
+
 import { TranslateService } from '@ngx-translate/core';
+import { SessionService } from './services/session.service';
 
 @Component({
   selector: 'app-root',
@@ -33,11 +37,21 @@ export class AppComponent {
     "ru", "si", "sk", "sl", "sr", "ta", "th", "tr", "uk", "vi", "zh"
   ];
 
-  constructor(translate: TranslateService) {
+  constructor(
+    translate: TranslateService,
+    private session: SessionService,
+    private router: Router,
+    private location: Location
+  ) {
     translate.addLangs(this.langs);
     // this language will be used as a fallback when a translation isn't found in the current language
     translate.setDefaultLang('en');
     // the lang to use, if the lang isn't available, it will use the current loader to get them
     translate.use(translate.getBrowserLang());
+  }
+
+  onSignOut() {
+    this.session.setData(null);
+    this.location.back();
   }
 }

@@ -48,6 +48,7 @@ import { TranslateModule, TranslateLoader } from "@ngx-translate/core"; //изм
 import { TranslateHttpLoader } from "@ngx-translate/http-loader"; //изменилось
 
 import { CountryCodeService } from './services/country-code.service';
+import { SessionService } from './services/session.service';
 import { AppComponent } from './app.component';
 import { MainPageComponent } from './components/main-page/main-page.component';
 import { SignInPageComponent } from './components/sign-in-page/sign-in-page.component';
@@ -63,7 +64,8 @@ export function HttpLoaderFactory(http: HttpClient) {
 
 // определение маршрутов
 const appRoutes: Routes = [
-  { path: '', component: MainPageComponent },
+  { path: '', component: SignInPageComponent },
+  { path: 'main', component: MainPageComponent },
   { path: 'signin', component: SignInPageComponent },
   { path: 'signup', component: SignUpPageComponent },
   { path: '**', component: NotFoundPageComponent }
@@ -111,7 +113,10 @@ const appRoutes: Routes = [
       }
     })
   ],
-  providers: [CountryCodeService],
+  providers: [
+    CountryCodeService,
+    SessionService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
