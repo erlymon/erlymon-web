@@ -40,5 +40,4 @@ export class AppComponent {
     // the lang to use, if the lang isn't available, it will use the current loader to get them
     translate.use(translate.getBrowserLang());
   }
-
 }
